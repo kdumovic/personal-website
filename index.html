@@ -2,11 +2,24 @@
 <html>
   <head>
     <title>Kyle Dumovic's Personal Website</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <button id='dark-mode-btn' onclick='toggleDarkMode()'>Dark Mode!</button>
-    <canvas></canvas>
-    <script src="main.js"></script>
+    <button id="dark-mode-btn" onclick="toggleDarkMode()">Dark Mode!</button>
+    <div class="floating-hero--container">
+      <div class="floating-hero--content">
+        <h1>Hi, I'm Kyle.</h1>
+        <p>I'm a Product Designer currently based in Los Angeles.</p>
+        <p>More coming soon...</p>
+        <br/>
+        <a class="hero--button" href="#">my resume -></a>
+        &nbsp;
+        <a class="hero--button" href="#">my old website -></a><br/>
+      </div>
+    </div>
+    <canvas id="bg-canvas"></canvas>
+    <script src="./main.js"></script>
   </body>
 </html>
