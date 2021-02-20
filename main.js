@@ -151,10 +151,14 @@ function toggleDarkMode() {
     globals.rectStrokeColor = '#fff';
     globals.htmlCanvas.style['background-color'] = '#000';
     document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
+    document.querySelector('body').classList.add('dark-mode');
+    document.querySelector('body').classList.remove('light-mode');
   } else {
     globals.rectStrokeColor = '#000';
     globals.htmlCanvas.style['background-color'] = '#fff';
     document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
+    document.querySelector('body').classList.add('light-mode');
+    document.querySelector('body').classList.remove('dark-mode');
   }
   redraw();
 }
