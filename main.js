@@ -85,8 +85,8 @@ function redraw() {
 }
 
 function resizeCanvas() {
-  globals.htmlCanvas.width = window.innerWidth*window.devicePixelRatio;
-  globals.htmlCanvas.height = window.innerHeight*window.devicePixelRatio;
+  globals.htmlCanvas.width = Math.round(window.innerWidth * window.devicePixelRatio);
+  globals.htmlCanvas.height = Math.round(window.innerHeight * window.devicePixelRatio);
   globals.htmlCanvas.style.width = `${window.innerWidth}px`;
   globals.htmlCanvas.style.height = `${window.innerHeight}px`;
   globals.ctx.scale(window.devicePixelRatio,window.devicePixelRatio); // adjust for retina displays
@@ -149,16 +149,14 @@ function drawRectanglePair(f_x1, f_y1) {
 function toggleDarkMode() {
   if (globals.rectStrokeColor == '#000') {
     globals.rectStrokeColor = '#fff';
-    globals.htmlCanvas.style['background-color'] = '#000';
     document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
-    document.querySelector('body').classList.add('dark-mode');
-    document.querySelector('body').classList.remove('light-mode');
+    document.querySelector('html').classList.add('dark-mode');
+    document.querySelector('html').classList.remove('light-mode');
   } else {
     globals.rectStrokeColor = '#000';
-    globals.htmlCanvas.style['background-color'] = '#fff';
     document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
-    document.querySelector('body').classList.add('light-mode');
-    document.querySelector('body').classList.remove('dark-mode');
+    document.querySelector('html').classList.add('light-mode');
+    document.querySelector('html').classList.remove('dark-mode');
   }
   redraw();
 }

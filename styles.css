@@ -140,8 +140,22 @@ body {
   margin: 0;
 }
 
+html.light-mode {
+  background-color: white;
+}
+
+html.dark-mode {
+  background-color: black;
+}
+
 body {
   font-family: "DM Mono", monospace; /* default font */
+}
+
+canvas {
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 #dark-mode-btn {
@@ -162,7 +176,7 @@ body {
   border: 1px solid white;
 }
 
-body.light-mode .floating-hero--container {
+html.light-mode .floating-hero--container {
   color: black; /* use variables I switch here! */
   background-color: white;
   border: 1px solid black;
@@ -183,10 +197,10 @@ a.hero--button {
   background-color: black;
   border: 1px solid white;
 
-  padding: 10px;
+  padding: 10px 15px;
 }
 
-body.light-mode a.hero--button {
+html.light-mode a.hero--button {
   color: black;
   background-color: white;
   border: 1px solid black;
@@ -199,7 +213,7 @@ a.hero--button:hover {
   transition: all 0.2s ease-in;
 }
 
-body.light-mode a.hero--button:hover {
+html.light-mode a.hero--button:hover {
   color: white;
   background-color: black;
 }
