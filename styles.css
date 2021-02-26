@@ -133,6 +133,12 @@ table {
 
 /* End CSS Reset */
 
+/* CSS vars */
+:root {
+  --fg-color: white;
+  --bg-color: black;
+}
+
 html,
 body {
   width: 100%;
@@ -140,12 +146,8 @@ body {
   margin: 0;
 }
 
-html.light-mode {
-  background-color: white;
-}
-
-html.dark-mode {
-  background-color: black;
+html {
+  background-color: var(--bg-color);
 }
 
 body {
@@ -174,15 +176,9 @@ canvas {
   max-width: min(500px, 86vw);
   /* height: 320px; */
 
-  color: white;
-  background-color: black;
-  border: 1px solid white;
-}
-
-html.light-mode .floating-hero--container {
-  color: black; /* use variables I switch here! */
-  background-color: white;
-  border: 1px solid black;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--fg-color);
 }
 
 .floating-hero--content {
@@ -206,29 +202,18 @@ a.hero--button {
   font-size: 16px;
   font-weight: 500;
 
-  color: white;
-  background-color: black;
-  border: 1px solid white;
-
   padding: 10px 15px;
-}
 
-html.light-mode a.hero--button {
-  color: black;
-  background-color: white;
-  border: 1px solid black;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--fg-color);
 }
 
 a.hero--button:hover {
-  color: black;
-  background-color: white;
+  color: var(--bg-color);
+  background-color: var(--fg-color);
 
   transition: all 0.2s ease-in;
-}
-
-html.light-mode a.hero--button:hover {
-  color: white;
-  background-color: black;
 }
 
 /* Custom Text Styles */

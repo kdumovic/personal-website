@@ -2,6 +2,8 @@ var globals = {};
 
 function main() {
 
+  globals.root = document.documentElement;
+
   globals.rectStrokeWidth = 1;
   globals.rectWidth = 25;
   globals.rectHeight = 25;
@@ -150,13 +152,17 @@ function toggleDarkMode() {
   if (globals.rectStrokeColor == '#000') {
     globals.rectStrokeColor = '#fff';
     document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
-    document.querySelector('html').classList.add('dark-mode');
-    document.querySelector('html').classList.remove('light-mode');
+    document.querySelector('html').classList.add('dark-mode'); // deprecated
+    document.querySelector('html').classList.remove('light-mode'); // deprecated
+    globals.root.style.setProperty('--fg-color', 'white');
+    globals.root.style.setProperty('--bg-color', 'black');
   } else {
     globals.rectStrokeColor = '#000';
     document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
-    document.querySelector('html').classList.add('light-mode');
-    document.querySelector('html').classList.remove('dark-mode');
+    document.querySelector('html').classList.add('light-mode'); // deprecated
+    document.querySelector('html').classList.remove('dark-mode'); // deprecated
+    globals.root.style.setProperty('--fg-color', 'black');
+    globals.root.style.setProperty('--bg-color', 'white');
   }
   redraw();
 }
