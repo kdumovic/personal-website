@@ -8,8 +8,13 @@ function main() {
   globals.rectWidth = 25;
   globals.rectHeight = 25;
   globals.rectStrokeColor = '#000';
-
   globals.gapBetweenRects = 50;
+
+  if (window.matchMedia('(max-width: 600px)').matches) {
+    globals.rectWidth = 20;
+    globals.rectHeight = 20;
+    globals.gapBetweenRects = 40;
+  }
 
   globals.htmlCanvas = document.querySelector("canvas");
   globals.ctx = globals.htmlCanvas.getContext("2d");
