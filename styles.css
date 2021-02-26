@@ -160,16 +160,19 @@ canvas {
 
 #dark-mode-btn {
   position: absolute;
-  top: 75px;
-  left: 75px;
+
+  top: min(75px, 7vw); /* TODO: Use CSS vars */
+  left: min(75px, 7vw);
 }
 
 .floating-hero--container {
   position: absolute;
-  left: 75px;
-  bottom: 75px;
-  width: 500px;
-  height: 320px;
+
+  left: min(75px, 7vw);
+  bottom: min(75px, 7vw);
+
+  max-width: min(500px, 86vw);
+  /* height: 320px; */
 
   color: white;
   background-color: black;
@@ -183,7 +186,17 @@ html.light-mode .floating-hero--container {
 }
 
 .floating-hero--content {
-  padding: 50px;
+  padding: min(50px, 7vw);
+}
+
+.hero--button-container ul li {
+  display: inline-block;
+}
+
+.hero--button-container ul li a {
+  margin-top: 10px;
+  margin-right: 10px;
+  display: inline-block;
 }
 
 a.hero--button {
@@ -231,4 +244,14 @@ p {
   font-weight: 300;
   line-height: 150%;
   margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
