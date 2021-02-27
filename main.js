@@ -78,6 +78,10 @@ function redraw() {
   let numCols = Math.floor((cx-(globals.rectWidth/2))/(globals.gapBetweenRects+globals.rectWidth))*2+1;
   let numRows = Math.floor((cy-(globals.rectHeight/2))/(globals.gapBetweenRects+globals.rectHeight))*2+1;
 
+  // extend beyond edges of page
+  numCols+=2;
+  numRows+=2;
+
   let initialOffsetFromLeft = (window.innerWidth - numCols*globals.rectWidth - (numCols-1)*globals.gapBetweenRects)/2;
   let initialOffsetFromTop = (window.innerHeight - numRows*globals.rectHeight - (numRows-1)*globals.gapBetweenRects)/2;
 
