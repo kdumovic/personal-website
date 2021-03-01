@@ -3,26 +3,56 @@
   <head>
     <title>Kyle Dumovic's Personal Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <a href="#" id="dark-mode-btn" class="hero--button" onclick="toggleDarkMode()">Dark Mode!</a>
-    <div class="floating-hero--container">
-      <div class="floating-hero--content">
-        <h1>Hi, I'm Kyle.</h1>
-        <p>I'm a Product Designer currently based in Los Angeles.</p>
-        <p>More coming soon...</p>
-        <div class="hero--button-container">
-          <ul>
-            <li><a class="hero--button" href="./kyle_dumovic_resume_9.11.20.pdf">my resume -></a></li>
-            <li><a class="hero--button" href="http://kyledumovic.com/">my old website -></a></li>
-          </ul>
+    <canvas id="bg-canvas"></canvas>
+    <a id="dark-mode-btn" class="hero--button" href="#" onclick="toggleDarkMode()">Dark Mode!</a>
+    <div class="page--container">
+      <div class="page--content">
+        <div class="main compressed">
+          <div class="floating-hero--content">
+            <h1>Hi, I'm Kyle.</h1>
+            <p>I'm a Product Designer currently based in Los Angeles.</p>
+            <p>More coming soon...</p>
+            <div class="hero--button-container">
+              <ul>
+                <li><a class="hero--button" href="#" onclick="toggleMainContent()">enter -></a></li>
+                <!-- <li><a class="hero--button" href="./kyle_dumovic_resume_9.11.20.pdf">my resume -></a></li> -->
+                <!-- <li><a class="hero--button" href="http://kyledumovic.com/">my old website -></a></li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="main--content-container">
+            <div class="main--sidenav">
+              <ul>
+                <li>About</li>
+                <li>Experience</li>
+                <li>Projects</li>
+                <li>Resume</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+            <div class="main--content">
+              <div class="main--about">
+                <h1>About me</h1>
+                <p>Hello! My name is Kyle and this is me talking about myself.</p>
+                <a class="hero--button" href="#" onclick="toggleMainContent()">exit -></a>
+                <br/>
+                <br/>
+              </div>
+              <div class="main--contact">
+                <h1>Contact me</h1>
+                <p>You can reach me at kdumovic [at] gmail [dot] com. Happy face.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <canvas id="bg-canvas"></canvas>
     <script src="./main.js"></script>
   </body>
 </html>

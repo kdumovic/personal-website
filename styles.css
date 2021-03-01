@@ -134,9 +134,24 @@ table {
 /* End CSS Reset */
 
 /* CSS vars */
+
 :root {
   --fg-color: white;
   --bg-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg-color: white;
+    --bg-color: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --fg-color: black;
+    --bg-color: white;
+  }
 }
 
 html,
@@ -154,31 +169,85 @@ body {
   font-family: "DM Mono", monospace; /* default font */
 }
 
-canvas {
+canvas,
+.page--container {
+  position: absolute;
   height: 100%;
   width: 100%;
-  display: block;
+}
+
+canvas {
+  z-index: -1;
+}
+
+.page--container {
+  z-index: 1;
 }
 
 #dark-mode-btn {
   position: absolute;
+  z-index: 2;
 
   top: min(75px, 7vw); /* TODO: Use CSS vars */
   left: min(75px, 7vw);
 }
 
-.floating-hero--container {
-  position: absolute;
+.page--content {
+  box-sizing: border-box; /* magic! */
 
-  left: min(75px, 7vw);
-  bottom: min(75px, 7vw);
+  height: 100%;
+  width: 100%;
 
-  max-width: min(500px, 86vw);
-  /* height: 320px; */
+  padding: min(75px, 7vw);
 
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  align-self: flex-end;
+}
+
+.main {
   color: var(--fg-color);
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
+
+  min-width: 0px;
+  min-height: 0px;
+
+  transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
+    opacity 0.3s ease-out;
+}
+
+.main.compressed {
+  max-width: min(500px, 86vw);
+  /* height: 320px; */
+}
+
+.main.expanded {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.main.compressed .floating-hero--content {
+  display: block;
+  opacity: 1;
+}
+
+.main.expanded .floating-hero--content {
+  display: none;
+  opacity: 0;
+}
+
+.main.compressed .main--content-container {
+  display: none;
+  opacity: 0;
+}
+
+.main.expanded .main--content-container {
+  display: block;
+  opacity: 1;
 }
 
 .floating-hero--content {

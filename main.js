@@ -7,7 +7,7 @@ function main() {
   globals.rectStrokeWidth = 1;
   globals.rectWidth = 25;
   globals.rectHeight = 25;
-  globals.rectStrokeColor = '#000';
+  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color');
   globals.gapBetweenRects = 50;
 
   if (window.matchMedia('(max-width: 600px)').matches) {
@@ -25,7 +25,7 @@ function main() {
   globals.maxOffset = globals.gapBetweenRects * 0.5;
 
   initialize();
-  toggleDarkMode();
+  toggleDarkMode(); // swap on first load to initialize state
 }
 
 function initialize() {
@@ -64,9 +64,12 @@ function redraw() {
   // clear canvas
   globals.ctx.clearRect(0, 0, globals.htmlCanvas.width, globals.htmlCanvas.height);
 
+  let width = document.documentElement.scrollWidth; // rather than window.innerWidth/Height
+  let height = document.documentElement.scrollHeight;
+
   // center coordinates
-  let cx = window.innerWidth/2;
-  let cy = window.innerHeight/2;
+  let cx = width/2;
+  let cy = height/2;
 
   // draw a rectangle in the exact center
   drawRectangleFromCenter(cx, cy, globals.rectWidth, globals.rectHeight, 'blue', 1);
@@ -82,8 +85,8 @@ function redraw() {
   numCols+=2;
   numRows+=2;
 
-  let initialOffsetFromLeft = (window.innerWidth - numCols*globals.rectWidth - (numCols-1)*globals.gapBetweenRects)/2;
-  let initialOffsetFromTop = (window.innerHeight - numRows*globals.rectHeight - (numRows-1)*globals.gapBetweenRects)/2;
+  let initialOffsetFromLeft = (width - numCols*globals.rectWidth - (numCols-1)*globals.gapBetweenRects)/2;
+  let initialOffsetFromTop = (height - numRows*globals.rectHeight - (numRows-1)*globals.gapBetweenRects)/2;
 
   // draw rows of rectangles from top left
   for (let rowNum = 0; rowNum < numRows; rowNum++) {
@@ -96,10 +99,12 @@ function redraw() {
 }
 
 function resizeCanvas() {
-  globals.htmlCanvas.width = Math.round(window.innerWidth * window.devicePixelRatio);
-  globals.htmlCanvas.height = Math.round(window.innerHeight * window.devicePixelRatio);
-  globals.htmlCanvas.style.width = `${window.innerWidth}px`;
-  globals.htmlCanvas.style.height = `${window.innerHeight}px`;
+  let width = document.documentElement.scrollWidth; // rather than window.innerWidth/Height
+  let height = document.documentElement.scrollHeight;
+  globals.htmlCanvas.width = Math.round(width * window.devicePixelRatio);
+  globals.htmlCanvas.height = Math.round(height * window.devicePixelRatio);
+  globals.htmlCanvas.style.width = `${width}px`;
+  globals.htmlCanvas.style.height = `${height}px`;
   globals.ctx.scale(window.devicePixelRatio,window.devicePixelRatio); // adjust for retina displays
 
   redraw();
@@ -158,22 +163,37 @@ function drawRectanglePair(f_x1, f_y1) {
 }
 
 function toggleDarkMode() {
-  if (globals.rectStrokeColor == '#000') {
-    globals.rectStrokeColor = '#fff';
-    document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
-    document.querySelector('html').classList.add('dark-mode'); // deprecated
-    document.querySelector('html').classList.remove('light-mode'); // deprecated
+  if (globals.rectStrokeColor.trim() == 'black') {
     globals.root.style.setProperty('--fg-color', 'white');
     globals.root.style.setProperty('--bg-color', 'black');
-  } else {
-    globals.rectStrokeColor = '#000';
-    document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
-    document.querySelector('html').classList.add('light-mode'); // deprecated
-    document.querySelector('html').classList.remove('dark-mode'); // deprecated
+    globals.rectStrokeColor = 'white';
+    document.querySelector('html').classList.add('dark-mode'); // deprecated
+    document.querySelector('html').classList.remove('light-mode'); // deprecated
+    document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
+  } else if (globals.rectStrokeColor.trim() == 'white') {
     globals.root.style.setProperty('--fg-color', 'black');
     globals.root.style.setProperty('--bg-color', 'white');
+    globals.rectStrokeColor = 'black';
+    document.querySelector('html').classList.add('light-mode'); // deprecated
+    document.querySelector('html').classList.remove('dark-mode'); // deprecated
+    document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
+  } else {
+    console.log('Something is broken with light/dark mode!');
   }
   redraw();
+}
+
+function toggleMainContent() {
+  let mainContent = document.querySelector('.main');
+  if (mainContent.classList.contains('compressed')) {
+    mainContent.classList.remove('compressed')
+    mainContent.classList.add('expanded')
+  } else if (mainContent.classList.contains('expanded')) {
+    mainContent.classList.remove('expanded')
+    mainContent.classList.add('compressed')
+  } else {
+    console.log('Something is broken with main content!');
+  }
 }
 
 window.onload = main();
