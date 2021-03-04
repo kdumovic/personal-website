@@ -201,11 +201,13 @@ canvas {
   padding: min(75px, 7vw);
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .main {
-  align-self: flex-end;
+  display: flex;
+  align-items: stretch;
 }
 
 .main {
@@ -216,8 +218,9 @@ canvas {
   min-width: 0px;
   min-height: 0px;
 
-  transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
-    opacity 0.3s ease-out;
+  /* transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
+    opacity 0.3s ease-out; */
+  transition: all 0.3s ease-out;
 }
 
 .main.compressed {
@@ -246,7 +249,7 @@ canvas {
 }
 
 .main.expanded .main--content-container {
-  display: block;
+  display: flex;
   opacity: 1;
 }
 
@@ -285,12 +288,54 @@ a.hero--button:hover {
   transition: all 0.2s ease-in;
 }
 
+.main--content-container {
+  flex-direction: row;
+  width: 100%;
+}
+
+.main--sidenav {
+  max-width: 225px;
+  flex: 1;
+
+  border-right: 1px solid var(--fg-color);
+}
+
+.main--sidenav ul {
+  margin-top: 50px;
+}
+
+.main--sidenav ul li {
+  font-size: 24px;
+  padding: 10px 25px;
+}
+
+.main--sidenav ul li.selected {
+  color: var(--bg-color);
+  background-color: var(--fg-color);
+}
+
+.main--sidenav ul li:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 1px var(--fg-color);
+}
+
+.main--content {
+  width: 100%;
+  flex: 1;
+}
+
 /* Custom Text Styles */
 
 h1 {
   font-size: 36px;
   font-weight: 500;
   margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 
 p {
