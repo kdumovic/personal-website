@@ -24,6 +24,9 @@ function main() {
   globals.offsetMultipler = 0.05;
   globals.maxOffset = globals.gapBetweenRects * 0.5;
 
+  globals.navItems = document.querySelectorAll('.main--sidenav ul li');
+  globals.mainContentItems = document.querySelectorAll('.main--content-item');
+
   globals.currentlyExpanded = () => document.querySelector('.main').classList.contains('expanded')
 
   initialize();
@@ -49,6 +52,11 @@ function initialize() {
       if (globals.currentlyExpanded()) toggleMainContent();
     }
   })
+
+  globals.navItems.forEach(item => {
+    item.addEventListener('click', showSectionContent);
+    item.addEventListener('touchstart', showSectionContent);
+  });
 
   function movementHandler(e, currentMouseX, currentMouseY) {
     if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend') {
@@ -208,6 +216,20 @@ function toggleMainContent() {
   } else {
     console.log('Something is broken with main content!');
   }
+}
+
+function showSectionContent(e) {
+  if (e.currentTarget.dataset.id == 'resume') return;
+  globals.navItems.forEach(item => item.classList.remove('selected'));
+  globals.mainContentItems.forEach(item => {
+    if (item.dataset.id == e.currentTarget.dataset.id) {
+      e.currentTarget.classList.add('selected');
+      item.classList.remove('hidden');
+      item.classList.add('visible');
+    } else {
+      item.classList.remove('visible');
+      item.classList.add('hidden');}
+  });
 }
 
 window.onload = main();

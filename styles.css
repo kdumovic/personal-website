@@ -184,6 +184,14 @@ canvas {
   z-index: 1;
 }
 
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inhert;
+}
+
 #dark-mode-btn {
   position: absolute;
   z-index: -1;
