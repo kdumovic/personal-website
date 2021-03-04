@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   </head>
   <body>
     <canvas id="bg-canvas"></canvas>
@@ -29,24 +30,38 @@
           <div class="main--content-container">
             <div class="main--sidenav">
               <ul>
-                <li class="selected"><u>A</u>bout</li>
-                <li><u>E</u>xperience</li>
-                <li><u>P</u>rojects</li>
-                <li><u>R</u>esume</li>
-                <li><u>C</u>ontact</li>
+                <li class="selected"><u>A</u>bout<span class="material-icons-outlined">chevron_right</span></li>
+                <li><u>E</u>xperience<span class="material-icons-outlined">chevron_right</span></li>
+                <li><u>P</u>rojects<span class="material-icons-outlined">chevron_right</span></li>
+                <li><u>R</u>esume<span class="material-icons-outlined">file_download</span></li>
+                <li><u>C</u>ontact<span class="material-icons-outlined">chevron_right</span></li>
               </ul>
+              <div class="main--sidenav--subtext">
+                <p>Use the <b>&uarr;</b> and <b>&darr;</b> keys to change the menu field and <b>&lt;Enter&gt;</b> to make a selection.</p>
+                <p>Use <b>&lt;Space&gt;</b> to toggle dark mode on and off.</p>
+              </div>
             </div>
             <div class="main--content">
+              <a id="collapse-main-btn" class="hero--button" href="#" onclick="toggleMainContent()">&LowerLeftArrow;</a>
               <div class="main--about">
-                <h1>About me</h1>
+                <h1>[/] About me</h1>
                 <p>Hello! My name is Kyle and this is me talking about myself.</p>
-                <a class="hero--button" href="#" onclick="toggleMainContent()">exit -></a>
                 <br/>
+              </div>
+              <div class="main--experience">
+                <h1>[*] Experience</h1>
+                <p>Here are all the places I've worked:</p>
+                <br/>
+              </div>
+              <div class="main--projects">
+                <h1>[^] Projects</h1>
+                <p>Here are some of the fun projects I've worked on:</p>
                 <br/>
               </div>
               <div class="main--contact">
-                <h1>Contact me</h1>
+                <h1>[#] Contact me</h1>
                 <p>You can reach me at kdumovic [at] gmail [dot] com. Happy face.</p>
+                <br/>
               </div>
             </div>
           </div>

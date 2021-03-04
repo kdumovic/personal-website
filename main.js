@@ -24,6 +24,8 @@ function main() {
   globals.offsetMultipler = 0.05;
   globals.maxOffset = globals.gapBetweenRects * 0.5;
 
+  globals.currentlyExpanded = () => document.querySelector('.main').classList.contains('expanded')
+
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
 }
@@ -35,6 +37,18 @@ function initialize() {
   ['touchstart','touchmove','touchend','mousemove'].forEach(function(e) {
     window.addEventListener(e, movementHandler);
   });
+
+  window.addEventListener('keyup', event => {
+    if (event.code === 'Space') {
+      toggleDarkMode();
+    }
+    if (event.code === 'Enter') {
+      if (!globals.currentlyExpanded()) toggleMainContent();
+    }
+    if (event.code === 'Escape') {
+      if (globals.currentlyExpanded()) toggleMainContent();
+    }
+  })
 
   function movementHandler(e, currentMouseX, currentMouseY) {
     if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend') {

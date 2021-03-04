@@ -186,7 +186,7 @@ canvas {
 
 #dark-mode-btn {
   position: absolute;
-  z-index: 2;
+  z-index: -1;
 
   top: min(75px, 7vw); /* TODO: Use CSS vars */
   left: min(75px, 7vw);
@@ -220,7 +220,7 @@ canvas {
 
   /* transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
     opacity 0.3s ease-out; */
-  transition: all 0.3s ease-out;
+  /* transition: all 0.3s ease-out; */
 }
 
 .main.compressed {
@@ -294,34 +294,69 @@ a.hero--button:hover {
 }
 
 .main--sidenav {
+  min-width: 225px;
   max-width: 225px;
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   border-right: 1px solid var(--fg-color);
 }
 
 .main--sidenav ul {
-  margin-top: 50px;
+  margin-top: 40px; /* TODO: vars (this is 2x) */
 }
 
 .main--sidenav ul li {
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px 25px;
+}
+
+.main--sidenav ul li span {
+  float: right;
 }
 
 .main--sidenav ul li.selected {
   color: var(--bg-color);
   background-color: var(--fg-color);
+  /* border-top: 1px solid var(--fg-color);
+  border-bottom: 1px solid var(--fg-color); */
 }
 
 .main--sidenav ul li:hover {
   cursor: pointer;
-  box-shadow: 0 0 0 1px var(--fg-color);
+  text-decoration: underline;
+  /* border-left: 20px solid var(--fg-color); */
+  /* padding-left: 5px; */
+  /* border-top: 1px solid var(--fg-color); */
+  /* border-bottom: 1px solid var(--fg-color); */
+}
+
+.main--sidenav--subtext {
+  padding: 20px;
+}
+
+.main--sidenav--subtext p {
+  font-size: 13px;
 }
 
 .main--content {
   width: 100%;
   flex: 1;
+
+  padding: 40px;
+
+  position: relative;
+}
+
+#collapse-main-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: none;
+  border-right: none;
 }
 
 /* Custom Text Styles */
@@ -343,6 +378,10 @@ p {
   font-weight: 300;
   line-height: 150%;
   margin-bottom: 20px;
+}
+
+b {
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 600px) {
