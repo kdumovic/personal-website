@@ -289,6 +289,11 @@ html.light-mode #dark-mode-btn span.dark {
   display: inline-block;
 }
 
+/* For a blinking hero button, it makes me nervous */
+/* .hero--button-container .hero--button {
+  animation: 1s blink step-end infinite;
+} */
+
 a.hero--button {
   text-transform: uppercase;
   text-decoration: none;
@@ -381,6 +386,7 @@ a.hero--button:hover {
     background-color: transparent;
   }
   50% {
+    color: var(--bg-color);
     background-color: var(--fg-color);
   }
 }
@@ -391,6 +397,7 @@ a.hero--button:hover {
     background-color: transparent;
   }
   50% {
+    color: var(--fg-color);
     background-color: var(--bg-color);
   }
 }
