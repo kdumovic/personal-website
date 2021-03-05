@@ -37,7 +37,9 @@ function main() {
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
-  moveCursor(document.querySelector('.main--sidenav ul li.selected'));
+  // moveCursorTo(document.querySelector('.hero--button-container .hero--button-text'));
+  moveCursorToNavItem(document.querySelector('.main--sidenav ul li.selected'));
+  globals.cursor.classList.toggle('hidden'); // hide cursor initially
 }
 
 function initialize() {
@@ -63,11 +65,11 @@ function initialize() {
     }
     if (event.code === 'ArrowDown') {
       if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
-      moveCursor(globals.navItemList[globals.currentNavItemIndex]);
+      moveCursorToNavItem(globals.navItemList[globals.currentNavItemIndex]);
     }
     if (event.code === 'ArrowUp') {
       if (globals.currentNavItemIndex > 0) globals.currentNavItemIndex--;
-      moveCursor(globals.navItemList[globals.currentNavItemIndex]);
+      moveCursorToNavItem(globals.navItemList[globals.currentNavItemIndex]);
     }
   })
 
@@ -224,9 +226,11 @@ function toggleDarkMode() {
 function toggleMainContent() {
   let mainContent = document.querySelector('.main');
   if (mainContent.classList.contains('compressed')) {
+    globals.cursor.classList.toggle('hidden'); // show cursor
     mainContent.classList.remove('compressed')
     mainContent.classList.add('expanded')
   } else if (mainContent.classList.contains('expanded')) {
+    globals.cursor.classList.toggle('hidden'); // hide cursor
     mainContent.classList.remove('expanded')
     mainContent.classList.add('compressed')
   } else {
@@ -254,18 +258,22 @@ function showContentCorrespondingToNavItem(listItem) {
       content.classList.remove('visible');
       content.classList.add('hidden');}
   });
-  moveCursor(listItem);
+  moveCursorToNavItem(listItem);
 }
 
-function moveCursor(li) {
-  if (li.classList.contains('selected')) {
+function moveCursorToNavItem(listItem) {
+  if (listItem.classList.contains('selected')) {
     globals.cursor.classList.add('inverted')
   } else {
     globals.cursor.classList.remove('inverted')
   }
-  [...globals.navItemList].forEach(item => item.classList.remove('underline'))
-  li.classList.add('underline');
-  const elem = li.querySelector('.nav-item--name');
+  [...globals.navItemList].forEach(li => li.classList.remove('underline'))
+  listItem.classList.add('underline');
+  const elem = listItem.querySelector('.nav-item--name');
+  moveCursorTo(elem);
+}
+
+function moveCursorTo(elem) {
   const linkCoords = elem.getBoundingClientRect();
   const coords = {
     width: linkCoords.width,
