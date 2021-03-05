@@ -349,19 +349,44 @@ a.hero--button:hover {
   font-size: 13px;
 }
 
-#highlight {
+#cursor {
   width: 10px;
   height: 20px;
+  margin-left: 2px;
+  margin-top: 3px;
 
   transition: all 0.2s;
   position: absolute;
   background-color: var(--fg-color);
   z-index: 2;
   display: block;
+
+  animation: 1s blink step-end infinite;
 }
 
-#highlight.inverted {
+#cursor.inverted {
   background-color: var(--bg-color);
+  animation: 1s blink-inverted step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--fg-color);
+  }
+}
+
+@keyframes blink-inverted {
+  from,
+  to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--bg-color);
+  }
 }
 
 /* li.selected .highlight {

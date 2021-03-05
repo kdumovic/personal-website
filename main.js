@@ -26,7 +26,7 @@ function main() {
 
   globals.navItems = document.querySelectorAll('.main--sidenav ul li');
   globals.mainContentItems = document.querySelectorAll('.main--content-item');
-  globals.highlight = document.querySelector('#highlight');
+  globals.cursor = document.querySelector('#cursor');
 
   globals.navItemList = document.querySelector('.main--sidenav ul').children;
   globals.numNavItems = globals.navItemList.length;
@@ -261,9 +261,9 @@ function showContentCorrespondingToNavItem(listItem) {
 
 function moveCursor(li) {
   if (li.classList.contains('selected')) {
-    globals.highlight.classList.add('inverted')
+    globals.cursor.classList.add('inverted')
   } else {
-    globals.highlight.classList.remove('inverted')
+    globals.cursor.classList.remove('inverted')
   }
   [...globals.navItemList].forEach(item => item.classList.remove('underline'))
   li.classList.add('underline');
@@ -275,7 +275,7 @@ function moveCursor(li) {
     top: linkCoords.top + window.scrollY,
     left: linkCoords.left + window.scrollX
   };
-  globals.highlight.style.transform = `translate(${coords.left+coords.width}px, ${coords.top}px)`;
+  globals.cursor.style.transform = `translate(${coords.left+coords.width}px, ${coords.top}px)`;
 }
 
 window.onload = main();
