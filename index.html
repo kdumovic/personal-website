@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   </head>
   <body>
+    <span id="highlight"></span>
     <canvas id="bg-canvas"></canvas>
     <div class="page--container">
       <div class="page--content">
@@ -30,11 +31,26 @@
           <div class="main--content-container">
             <div class="main--sidenav">
               <ul>
-                <li data-id="about" class="selected"><u>A</u>bout<span class="material-icons-outlined">chevron_right</span></li>
-                <li data-id="experience"><u>E</u>xperience<span class="material-icons-outlined">chevron_right</span></li>
-                <li data-id="projects"><u>P</u>rojects<span class="material-icons-outlined">chevron_right</span></li>
-                <li data-id="contact"><u>C</u>ontact<span class="material-icons-outlined">chevron_right</span></li>
-                <li data-id="resume" onclick="window.open('./kyle_dumovic_resume_9.11.20.pdf');"><u>R</u>esume<span class="material-icons-outlined">file_download</span></li>
+                <li data-id="about" class="selected">
+                  <span class="nav-item--name"><u>A</u>bout</span>
+                  <span class="material-icons-outlined">chevron_right</span>
+                </li>
+                <li data-id="experience">
+                  <span class="nav-item--name"><u>E</u>xperience</span>
+                  <span class="material-icons-outlined">chevron_right</span>
+                </li>
+                <li data-id="projects">
+                  <span class="nav-item--name"><u>P</u>rojects</span>
+                  <span class="material-icons-outlined">chevron_right</span>
+                </li>
+                <li data-id="contact">
+                  <span class="nav-item--name"><u>C</u>ontact</span>
+                  <span class="material-icons-outlined">chevron_right</span>
+                </li>
+                <li data-id="resume" onclick="window.open('./kyle_dumovic_resume_9.11.20.pdf');">
+                  <span class="nav-item--name"><u>R</u>esume</span>
+                  <span class="material-icons-outlined">file_download</span>
+                </li>
               </ul>
               <div class="main--sidenav--subtext">
                 <p>Use the <b>&uarr;</b> and <b>&darr;</b> keys to change the menu field and <b>&lt;Enter&gt;</b> to make a selection.</p>

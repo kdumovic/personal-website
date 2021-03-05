@@ -26,11 +26,17 @@ function main() {
 
   globals.navItems = document.querySelectorAll('.main--sidenav ul li');
   globals.mainContentItems = document.querySelectorAll('.main--content-item');
+  globals.highlight = document.querySelector('#highlight');
+
+  let li = document.querySelector('.main--sidenav ul li.selected');
+  globals.currentNavItemIndex = [...li.parentElement.children].indexOf(li);
+  globals.numNavItems = li.parentElement.children.length;
 
   globals.currentlyExpanded = () => document.querySelector('.main').classList.contains('expanded')
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
+  moveCursor(document.querySelector('.main--sidenav ul li.selected'));
 }
 
 function initialize() {
@@ -50,6 +56,16 @@ function initialize() {
     }
     if (event.code === 'Escape') {
       if (globals.currentlyExpanded()) toggleMainContent();
+    }
+    if (event.code === 'ArrowUp') {
+      console.log('Up!');
+      if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
+      // TODO: moveCursor();
+    }
+    if (event.code === 'ArrowDown') {
+      console.log('Down!');
+      if (globals.currentNavItemIndex > 0) globals.currentNavItemIndex--;
+      // TODO: moveCursor();
     }
   })
 
@@ -230,6 +246,24 @@ function showSectionContent(e) {
       item.classList.remove('visible');
       item.classList.add('hidden');}
   });
+  moveCursor(e.currentTarget);
+}
+
+function moveCursor(li) {
+  if (li.classList.contains('selected')) {
+    globals.highlight.classList.add('inverted')
+  } else {
+    globals.highlight.classList.remove('inverted')
+  }
+  const elem = li.querySelector('.nav-item--name');
+  const linkCoords = elem.getBoundingClientRect();
+  const coords = {
+    width: linkCoords.width,
+    height: linkCoords.height,
+    top: linkCoords.top + window.scrollY,
+    left: linkCoords.left + window.scrollX
+  };
+  globals.highlight.style.transform = `translate(${coords.left+coords.width}px, ${coords.top}px)`;
 }
 
 window.onload = main();

@@ -194,7 +194,7 @@ canvas {
 
 #dark-mode-btn {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
 
   top: min(75px, 7vw); /* TODO: Use CSS vars */
   left: min(75px, 7vw);
@@ -239,6 +239,10 @@ canvas {
 .main.expanded {
   min-width: 100%;
   min-height: 100%;
+}
+
+.main.expanded #dark-mode-btn {
+  display: none;
 }
 
 .main.compressed .floating-hero--content {
@@ -322,7 +326,7 @@ a.hero--button:hover {
   padding: 10px 25px;
 }
 
-.main--sidenav ul li span {
+.main--sidenav ul li span.material-icons-outlined {
   float: right;
 }
 
@@ -349,6 +353,25 @@ a.hero--button:hover {
 .main--sidenav--subtext p {
   font-size: 13px;
 }
+
+#highlight {
+  width: 10px;
+  height: 20px;
+
+  transition: all 0.2s;
+  position: absolute;
+  background-color: var(--fg-color);
+  z-index: 2;
+  display: block;
+}
+
+#highlight.inverted {
+  background-color: var(--bg-color);
+}
+
+/* li.selected .highlight {
+  background-color: var(--bg-color);
+} */
 
 .main--content {
   width: 100%;
