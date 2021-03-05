@@ -14,15 +14,20 @@
     <canvas id="bg-canvas"></canvas>
     <div class="page--container">
       <div class="page--content">
-        <div class="main expanded">
-          <a id="dark-mode-btn" class="hero--button" href="#" onclick="toggleDarkMode()">Dark Mode!</a>
+        <div class="main compressed">
+          <div id="dark-mode-btn">
+            <a class="hero--button" href="#" onclick="toggleDarkMode()">
+              <span class="light">Dark Mode</span>
+              <span class="dark">Light Mode</span>
+              <span class="lowercase subtext">or <b>&lt;space&gt;</b></span>
+            </a>
+          </div>
           <div class="floating-hero--content">
             <h1>Hi, I'm Kyle.</h1>
             <p>I'm a Product Designer currently based in Los Angeles.</p>
-            <p>More coming soon...</p>
             <div class="hero--button-container">
               <ul>
-                <li><a class="hero--button" href="#" onclick="toggleMainContent()">enter -></a></li>
+                <li><a class="hero--button" href="#" onclick="toggleMainContent()">Enter <span class="lowercase subtext">or <b>&lt;enter&gt;</b></span></a></li>
                 <!-- <li><a class="hero--button" href="./kyle_dumovic_resume_9.11.20.pdf">my resume -></a></li> -->
                 <!-- <li><a class="hero--button" href="http://kyledumovic.com/">my old website -></a></li> -->
               </ul>
@@ -53,8 +58,8 @@
                 </li>
               </ul>
               <div class="main--sidenav--subtext">
-                <p>Use the <b>&uarr;</b> and <b>&darr;</b> keys to change the menu field and <b>&lt;Enter&gt;</b> to make a selection.</p>
-                <p>Use <b>&lt;Space&gt;</b> to toggle dark mode on and off.</p>
+                <p class="subtext">Use the <b>&uarr;</b> and <b>&darr;</b> keys to change the menu field and <b>&lt;Enter&gt;</b> to make a selection.</p>
+                <p class="subtext">Use <b>&lt;Space&gt;</b> to toggle dark mode on and off.</p>
               </div>
             </div>
             <div class="main--content">

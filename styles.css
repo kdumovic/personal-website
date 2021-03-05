@@ -200,6 +200,16 @@ canvas {
   left: min(75px, 7vw);
 }
 
+html.dark-mode #dark-mode-btn span.dark,
+html.light-mode #dark-mode-btn span.light {
+  display: inline;
+}
+
+html.dark-mode #dark-mode-btn span.light,
+html.light-mode #dark-mode-btn span.dark {
+  display: none;
+}
+
 .page--content {
   box-sizing: border-box; /* magic! */
 
@@ -345,10 +355,6 @@ a.hero--button:hover {
   padding: 20px;
 }
 
-.main--sidenav--subtext p {
-  font-size: 13px;
-}
-
 #cursor {
   width: 10px;
   height: 20px;
@@ -431,8 +437,17 @@ p {
   margin-bottom: 20px;
 }
 
+.subtext {
+  font-size: 13px;
+  font-weight: 300;
+}
+
 b {
   font-weight: 500;
+}
+
+.lowercase {
+  text-transform: lowercase;
 }
 
 @media only screen and (max-width: 600px) {

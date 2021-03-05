@@ -207,16 +207,14 @@ function toggleDarkMode() {
     globals.root.style.setProperty('--fg-color', 'white');
     globals.root.style.setProperty('--bg-color', 'black');
     globals.rectStrokeColor = 'white';
-    document.querySelector('html').classList.add('dark-mode'); // deprecated
-    document.querySelector('html').classList.remove('light-mode'); // deprecated
-    document.getElementById('dark-mode-btn').innerHTML = 'Light mode!';
+    document.querySelector('html').classList.add('dark-mode');
+    document.querySelector('html').classList.remove('light-mode');
   } else if (globals.rectStrokeColor.trim() == 'white') {
     globals.root.style.setProperty('--fg-color', 'black');
     globals.root.style.setProperty('--bg-color', 'white');
     globals.rectStrokeColor = 'black';
-    document.querySelector('html').classList.add('light-mode'); // deprecated
-    document.querySelector('html').classList.remove('dark-mode'); // deprecated
-    document.getElementById('dark-mode-btn').innerHTML = 'Dark mode!';
+    document.querySelector('html').classList.add('light-mode');
+    document.querySelector('html').classList.remove('dark-mode');
   } else {
     console.log('Something is broken with light/dark mode!');
   }
