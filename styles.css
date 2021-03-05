@@ -421,6 +421,9 @@ a.hero--button:hover {
   right: 0;
   border-top: none;
   border-right: none;
+  /* padding: 5px 10px; */
+  display: flex;
+  align-items: center;
 }
 
 /* Custom Text Styles */
@@ -455,6 +458,10 @@ b {
 
 .lowercase {
   text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 600px) {
