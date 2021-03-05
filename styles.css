@@ -333,17 +333,12 @@ a.hero--button:hover {
 .main--sidenav ul li.selected {
   color: var(--bg-color);
   background-color: var(--fg-color);
-  /* border-top: 1px solid var(--fg-color);
-  border-bottom: 1px solid var(--fg-color); */
 }
 
-.main--sidenav ul li:hover {
+.main--sidenav ul li:hover,
+.main--sidenav ul li.underline {
   cursor: pointer;
   text-decoration: underline;
-  /* border-left: 20px solid var(--fg-color); */
-  /* padding-left: 5px; */
-  /* border-top: 1px solid var(--fg-color); */
-  /* border-bottom: 1px solid var(--fg-color); */
 }
 
 .main--sidenav--subtext {

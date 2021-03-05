@@ -28,9 +28,10 @@ function main() {
   globals.mainContentItems = document.querySelectorAll('.main--content-item');
   globals.highlight = document.querySelector('#highlight');
 
+  globals.navItemList = document.querySelector('.main--sidenav ul').children;
+  globals.numNavItems = globals.navItemList.length;
   let li = document.querySelector('.main--sidenav ul li.selected');
-  globals.currentNavItemIndex = [...li.parentElement.children].indexOf(li);
-  globals.numNavItems = li.parentElement.children.length;
+  globals.currentNavItemIndex = [...globals.navItemList].indexOf(li);
 
   globals.currentlyExpanded = () => document.querySelector('.main').classList.contains('expanded')
 
@@ -53,25 +54,26 @@ function initialize() {
     }
     if (event.code === 'Enter') {
       if (!globals.currentlyExpanded()) toggleMainContent();
+      if (globals.currentlyExpanded()) {
+        showContentCorrespondingToNavItem(globals.navItemList[globals.currentNavItemIndex]);
+      }
     }
     if (event.code === 'Escape') {
       if (globals.currentlyExpanded()) toggleMainContent();
     }
-    if (event.code === 'ArrowUp') {
-      console.log('Up!');
-      if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
-      // TODO: moveCursor();
-    }
     if (event.code === 'ArrowDown') {
-      console.log('Down!');
+      if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
+      moveCursor(globals.navItemList[globals.currentNavItemIndex]);
+    }
+    if (event.code === 'ArrowUp') {
       if (globals.currentNavItemIndex > 0) globals.currentNavItemIndex--;
-      // TODO: moveCursor();
+      moveCursor(globals.navItemList[globals.currentNavItemIndex]);
     }
   })
 
   globals.navItems.forEach(item => {
-    item.addEventListener('click', showSectionContent);
-    item.addEventListener('touchstart', showSectionContent);
+    item.addEventListener('click', (e) => showContentCorrespondingToNavItem(e.currentTarget));
+    item.addEventListener('touchstart', (e) => showContentCorrespondingToNavItem(e.currentTarget));
   });
 
   function movementHandler(e, currentMouseX, currentMouseY) {
@@ -234,19 +236,27 @@ function toggleMainContent() {
   }
 }
 
-function showSectionContent(e) {
-  if (e.currentTarget.dataset.id == 'resume') return;
+function openResume() {
+  window.open('./kyle_dumovic_resume_9.11.20.pdf');
+}
+
+function showContentCorrespondingToNavItem(listItem) {
+  if (listItem.dataset.id == 'resume') {
+    openResume();
+    return;
+  }
   globals.navItems.forEach(item => item.classList.remove('selected'));
-  globals.mainContentItems.forEach(item => {
-    if (item.dataset.id == e.currentTarget.dataset.id) {
-      e.currentTarget.classList.add('selected');
-      item.classList.remove('hidden');
-      item.classList.add('visible');
+  globals.mainContentItems.forEach(content => {
+    if (content.dataset.id == listItem.dataset.id) {
+      listItem.classList.add('selected');
+      globals.currentNavItemIndex = [...globals.navItemList].indexOf(listItem);
+      content.classList.remove('hidden');
+      content.classList.add('visible');
     } else {
-      item.classList.remove('visible');
-      item.classList.add('hidden');}
+      content.classList.remove('visible');
+      content.classList.add('hidden');}
   });
-  moveCursor(e.currentTarget);
+  moveCursor(listItem);
 }
 
 function moveCursor(li) {
@@ -255,6 +265,8 @@ function moveCursor(li) {
   } else {
     globals.highlight.classList.remove('inverted')
   }
+  [...globals.navItemList].forEach(item => item.classList.remove('underline'))
+  li.classList.add('underline');
   const elem = li.querySelector('.nav-item--name');
   const linkCoords = elem.getBoundingClientRect();
   const coords = {
