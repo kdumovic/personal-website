@@ -138,6 +138,7 @@ table {
 :root {
   --fg-color: white;
   --bg-color: black;
+  --default-padding: min(50px, 7vw);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -282,7 +283,7 @@ html.light-mode .dark-mode--button span.dark {
 }
 
 .floating-hero--content {
-  padding: min(50px, 7vw);
+  padding: var(--default-padding);
 }
 
 .hero--button-container ul li {
@@ -340,7 +341,7 @@ a.hero--button:hover {
 }
 
 .main--sidenav ul {
-  margin-top: 40px; /* TODO: vars (this is 2x) */
+  padding-top: var(--default-padding);
 }
 
 .main--sidenav ul li {
@@ -409,15 +410,11 @@ a.hero--button:hover {
   }
 }
 
-/* li.selected .highlight {
-  background-color: var(--bg-color);
-} */
-
 .main--content {
   width: 100%;
   flex: 1;
 
-  padding: 40px;
+  padding: var(--default-padding);
 
   overflow: scroll;
 
@@ -493,5 +490,9 @@ b {
 
   .main--content-item.hidden {
     display: block !important;
+  }
+
+  .hero--button .lowercase.subtext {
+    display: none;
   }
 }
