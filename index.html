@@ -13,22 +13,20 @@
     <span id="cursor"></span>
     <canvas id="bg-canvas"></canvas>
     <div class="page--container">
-      <div class="page--content">
-        <div class="main compressed">
-          <div id="dark-mode-btn">
-            <a class="hero--button" href="#" onclick="toggleDarkMode()">
-              <span class="hero--button-text light">Dark Mode</span>
-              <span class="hero--button-text dark">Light Mode</span>
-              <span class="lowercase subtext">or <b>&lt;space&gt;</b></span>
-            </a>
-          </div>
+      <div class="page--content compressed">
+        <a class="hero--button dark-mode--button" href="#" onclick="toggleDarkMode()">
+          <span class="hero--button-text light">Dark Mode</span>
+          <span class="hero--button-text dark">Light Mode</span>
+          <span class="lowercase subtext">or <b>&lt;space&gt;</b></span>
+        </a>
+        <div class="main">
           <div class="floating-hero--content">
             <h1>Hi, I'm Kyle.</h1>
             <p>I'm a Product Designer currently based in Los Angeles.</p>
             <div class="hero--button-container">
               <ul>
                 <li>
-                  <a class="hero--button" href="#" onclick="toggleMainContent()">
+                  <a class="hero--button" href="#" onclick="togglePageContent()">
                     <span class="hero--button-text">Enter</span>
                     <span class="lowercase subtext"> or <b>&lt;enter&gt;</b></span>
                   </a>
@@ -68,7 +66,7 @@
               </div>
             </div>
             <div class="main--content">
-              <a id="collapse-main-btn" class="hero--button" href="#" onclick="toggleMainContent()">
+              <a id="collapse-main-btn" class="hero--button" href="#" onclick="togglePageContent()">
                 <span class="material-icons-outlined">south_west</span>
                 <span class="lowercase subtext">&nbsp;or <b>&lt;esc&gt;</b></span>
               </a>
@@ -83,7 +81,7 @@
                 <br/>
               </div>
               <div class="main--content-item hidden" data-id="projects">
-                <h1>[^] Projects</h1>
+                <h1>[~] Projects</h1>
                 <p>Here are some of the fun projects I've worked on:</p>
                 <br/>
               </div>

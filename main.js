@@ -33,7 +33,7 @@ function main() {
   let li = document.querySelector('.main--sidenav ul li.selected');
   globals.currentNavItemIndex = [...globals.navItemList].indexOf(li);
 
-  globals.currentlyExpanded = () => document.querySelector('.main').classList.contains('expanded')
+  globals.currentlyExpanded = () => document.querySelector('.page--content').classList.contains('expanded')
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
@@ -55,13 +55,13 @@ function initialize() {
       toggleDarkMode();
     }
     if (event.code === 'Enter') {
-      if (!globals.currentlyExpanded()) toggleMainContent();
+      if (!globals.currentlyExpanded()) togglePageContent();
       if (globals.currentlyExpanded()) {
         showContentCorrespondingToNavItem(globals.navItemList[globals.currentNavItemIndex]);
       }
     }
     if (event.code === 'Escape') {
-      if (globals.currentlyExpanded()) toggleMainContent();
+      if (globals.currentlyExpanded()) togglePageContent();
     }
     if (event.code === 'ArrowDown') {
       if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
@@ -223,18 +223,18 @@ function toggleDarkMode() {
   redraw();
 }
 
-function toggleMainContent() {
-  let mainContent = document.querySelector('.main');
-  if (mainContent.classList.contains('compressed')) {
+function togglePageContent() {
+  let pageContent = document.querySelector('.page--content');
+  if (pageContent.classList.contains('compressed')) {
     globals.cursor.classList.toggle('hidden'); // show cursor
-    mainContent.classList.remove('compressed')
-    mainContent.classList.add('expanded')
-  } else if (mainContent.classList.contains('expanded')) {
+    pageContent.classList.remove('compressed')
+    pageContent.classList.add('expanded')
+  } else if (pageContent.classList.contains('expanded')) {
     globals.cursor.classList.toggle('hidden'); // hide cursor
-    mainContent.classList.remove('expanded')
-    mainContent.classList.add('compressed')
+    pageContent.classList.remove('expanded')
+    pageContent.classList.add('compressed')
   } else {
-    console.log('Something is broken with main content!');
+    console.log('Something is broken with page content!');
   }
 }
 

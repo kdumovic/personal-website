@@ -180,10 +180,6 @@ canvas {
   z-index: -1;
 }
 
-.page--container {
-  z-index: 1;
-}
-
 .hidden {
   display: none !important;
 }
@@ -192,39 +188,40 @@ canvas {
   display: inhert;
 }
 
-#dark-mode-btn {
-  position: absolute;
-  z-index: 1;
-
-  top: min(75px, 7vw); /* TODO: Use CSS vars */
-  left: min(75px, 7vw);
-}
-
-html.dark-mode #dark-mode-btn span.dark,
-html.light-mode #dark-mode-btn span.light {
+html.dark-mode .dark-mode--button span.dark,
+html.light-mode .dark-mode--button span.light {
   display: inline;
 }
 
-html.dark-mode #dark-mode-btn span.light,
-html.light-mode #dark-mode-btn span.dark {
+html.dark-mode .dark-mode--button span.light,
+html.light-mode .dark-mode--button span.dark {
   display: none;
 }
 
-.page--content {
-  box-sizing: border-box; /* magic! */
+.page--container {
+  z-index: 1;
 
-  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.page--content {
+  /* box-sizing: border-box; */ /* magic! */ /* but we're using flexbox instead */
+
   width: 100%;
 
-  padding: min(75px, 7vw);
+  max-width: 1440px;
+
+  margin: min(75px, 7vw);
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .main {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
 }
 
@@ -241,38 +238,47 @@ html.light-mode #dark-mode-btn span.dark {
   /* transition: all 0.3s ease-out; */
 }
 
-.main.compressed {
+.page--content.compressed .main {
   max-width: min(500px, 86vw);
   /* height: 320px; */
 }
 
-.main.expanded {
+.page--content.expanded .main {
   min-width: 100%;
   min-height: 100%;
 }
 
-.main.expanded #dark-mode-btn {
+.page--content.expanded .dark-mode--button {
   display: none;
 }
 
-.main.compressed .floating-hero--content {
+.page--content.compressed .main .floating-hero--content {
   display: block;
   opacity: 1;
 }
 
-.main.expanded .floating-hero--content {
+.page--content.expanded .main .floating-hero--content {
   display: none;
   opacity: 0;
 }
 
-.main.compressed .main--content-container {
+.page--content.compressed .main .main--content-container {
   display: none;
   opacity: 0;
 }
 
-.main.expanded .main--content-container {
+.page--content.expanded .main .main--content-container {
   display: flex;
   opacity: 1;
+}
+
+.dark-mode--button {
+  align-self: flex-start;
+  /* position: absolute;
+  z-index: 1;
+
+  top: min(75px, 7vw);
+  left: min(75px, 7vw); */
 }
 
 .floating-hero--content {
@@ -289,7 +295,7 @@ html.light-mode #dark-mode-btn span.dark {
   display: inline-block;
 }
 
-/* For a blinking hero button, it makes me nervous */
+/* For a blinking hero button, but it makes me nervous */
 /* .hero--button-container .hero--button {
   animation: 1s blink step-end infinite;
 } */
@@ -317,6 +323,7 @@ a.hero--button:hover {
 
 .main--content-container {
   flex-direction: row;
+  height: 100%;
   width: 100%;
 }
 
