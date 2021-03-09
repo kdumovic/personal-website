@@ -170,7 +170,7 @@ body {
 }
 
 canvas,
-.page--container {
+.page--content-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -198,7 +198,7 @@ html.light-mode .dark-mode--button span.dark {
   display: none;
 }
 
-.page--container {
+.page--content-container {
   z-index: 1;
 
   display: flex;
@@ -238,36 +238,36 @@ html.light-mode .dark-mode--button span.dark {
   /* transition: all 0.3s ease-out; */
 }
 
-.page--content.compressed .main {
+.page--content-container.compressed .main {
   max-width: min(500px, 86vw);
   /* height: 320px; */
 }
 
-.page--content.expanded .main {
+.page--content-container.expanded .main {
   min-width: 100%;
   min-height: 100%;
 }
 
-.page--content.expanded .dark-mode--button {
+.page--content-container.expanded .dark-mode--button {
   display: none;
 }
 
-.page--content.compressed .main .floating-hero--content {
+.page--content-container.compressed .main .floating-hero--content {
   display: block;
   opacity: 1;
 }
 
-.page--content.expanded .main .floating-hero--content {
+.page--content-container.expanded .main .floating-hero--content {
   display: none;
   opacity: 0;
 }
 
-.page--content.compressed .main .main--content-container {
+.page--content-container.compressed .main .main--content-container {
   display: none;
   opacity: 0;
 }
 
-.page--content.expanded .main .main--content-container {
+.page--content-container.expanded .main .main--content-container {
   display: flex;
   opacity: 1;
 }
@@ -419,6 +419,8 @@ a.hero--button:hover {
 
   padding: 40px;
 
+  overflow: scroll;
+
   position: relative;
 }
 
@@ -471,6 +473,7 @@ b {
   text-transform: uppercase;
 }
 
+/* Responsive (mobile support) */
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: 30px;
@@ -478,5 +481,17 @@ b {
 
   p {
     font-size: 16px;
+  }
+
+  .page--content-container.expanded {
+    height: auto;
+  }
+
+  .main--sidenav {
+    display: none;
+  }
+
+  .main--content-item.hidden {
+    display: block !important;
   }
 }

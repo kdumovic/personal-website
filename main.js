@@ -5,15 +5,30 @@ function main() {
   globals.root = document.documentElement;
 
   globals.rectStrokeWidth = 1;
-  globals.rectWidth = 25;
-  globals.rectHeight = 25;
-  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color');
-  globals.gapBetweenRects = 50;
+  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color'); // the opposite color since we run toggleDarkMode to initialze state on first load
 
-  if (window.matchMedia('(max-width: 600px)').matches) {
-    globals.rectWidth = 20;
-    globals.rectHeight = 20;
-    globals.gapBetweenRects = 40;
+  if (matchMedia) {
+    const mq = window.matchMedia('(max-width: 600px)');
+    mq.addEventListener('change', setDynamicRectGlobals);
+    setDynamicRectGlobals(mq);
+  }
+
+  function setDynamicRectGlobals(e) { // TODO: Rename -> onResponsiveSwap() e.g.
+    if (e.matches) {
+      // window width is <600px
+      globals.rectWidth = 20;
+      globals.rectHeight = 20;
+      globals.gapBetweenRects = 40;
+    } else {
+      // default
+      globals.rectWidth = 25;
+      globals.rectHeight = 25;
+      globals.gapBetweenRects = 50;
+    }
+    if (globals.htmlCanvas) { // only run on subsequent calls
+      resetCanvas();
+      resizeCanvas();
+    }
   }
 
   globals.htmlCanvas = document.querySelector("canvas");
@@ -33,7 +48,7 @@ function main() {
   let li = document.querySelector('.main--sidenav ul li.selected');
   globals.currentNavItemIndex = [...globals.navItemList].indexOf(li);
 
-  globals.currentlyExpanded = () => document.querySelector('.page--content').classList.contains('expanded')
+  globals.currentlyExpanded = () => document.querySelector('.page--content-container').classList.contains('expanded')
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
@@ -102,7 +117,6 @@ function initialize() {
 }
 
 function redraw() {
-
   // clear canvas
   globals.ctx.clearRect(0, 0, globals.htmlCanvas.width, globals.htmlCanvas.height);
 
@@ -138,6 +152,13 @@ function redraw() {
       drawRectanglePair(x1, y1);
     }
   }
+}
+
+function resetCanvas() {
+  globals.htmlCanvas.width = 0;
+  globals.htmlCanvas.height = 0;
+  globals.htmlCanvas.style.width = '0px';
+  globals.htmlCanvas.style.height = '0px';
 }
 
 function resizeCanvas() {
@@ -224,18 +245,20 @@ function toggleDarkMode() {
 }
 
 function togglePageContent() {
-  let pageContent = document.querySelector('.page--content');
-  if (pageContent.classList.contains('compressed')) {
+  let pageContentContainer = document.querySelector('.page--content-container');
+  if (pageContentContainer.classList.contains('compressed')) {
     globals.cursor.classList.toggle('hidden'); // show cursor
-    pageContent.classList.remove('compressed')
-    pageContent.classList.add('expanded')
-  } else if (pageContent.classList.contains('expanded')) {
+    pageContentContainer.classList.remove('compressed')
+    pageContentContainer.classList.add('expanded')
+  } else if (pageContentContainer.classList.contains('expanded')) {
     globals.cursor.classList.toggle('hidden'); // hide cursor
-    pageContent.classList.remove('expanded')
-    pageContent.classList.add('compressed')
+    pageContentContainer.classList.remove('expanded')
+    pageContentContainer.classList.add('compressed')
   } else {
-    console.log('Something is broken with page content!');
+    console.log('Something is broken with page content container!');
   }
+  resetCanvas(); // for mobile edge case
+  resizeCanvas(); // for mobile edge case
 }
 
 function openResume() {
