@@ -12,29 +12,35 @@
   <body>
     <span id="cursor"></span>
     <canvas id="bg-canvas"></canvas>
-    <div class="page--content-container expanded">
+    <div class="page--content-container compressed">
       <div class="page--content">
         <a class="hero--button dark-mode--button" href="#" onclick="toggleDarkMode()">
           <span class="hero--button-text light">Dark Mode</span>
           <span class="hero--button-text dark">Light Mode</span>
-          <span class="lowercase subtext">or <b>&lt;space&gt;</b></span>
+          <span class="lowercase subtext">or&nbsp;<b>&lt;space&gt;</b></span>
         </a>
         <div class="main">
-          <div class="floating-hero--content">
+          <div class="main--hero">
             <h1>Hi, I'm Kyle.</h1>
             <p>I'm a Product Designer currently based in Los Angeles.</p>
-            <div class="hero--button-container">
-              <ul>
-                <li>
-                  <a class="hero--button" href="#" onclick="togglePageContent()">
-                    <span class="hero--button-text">Enter</span>
-                    <span class="lowercase subtext"> or <b>&lt;enter&gt;</b></span>
-                  </a>
-                </li>
-                <!-- <li><a class="hero--button" href="./kyle_dumovic_resume_9.11.20.pdf">my resume -></a></li> -->
-                <!-- <li><a class="hero--button" href="http://kyledumovic.com/">my old website -></a></li> -->
-              </ul>
-            </div>
+            <a class="hero--button" href="#" onclick="togglePageContent()">
+              <span class="hero--button-text">Enter</span>
+              <span class="lowercase subtext">or&nbsp;<b>&lt;enter&gt;</b></span>
+            </a>
+          </div>
+          <div class="main--title-bar">
+            <span class="main--title-bar--circles">
+              <span class="circle red"></span>
+              <span class="circle yellow"></span>
+              <span class="circle green"></span>
+            </span>
+            <span class="main--title-bar--title">guest@kyledumovic.com: ~/</span>
+            <span>
+              <a id="collapse-main-btn" class="hero--button" href="#" onclick="togglePageContent()">
+                <span class="material-icons-outlined">south_west</span>
+                <span class="lowercase subtext">or&nbsp;<b>&lt;esc&gt;</b></span>
+              </a>
+            </span>
           </div>
           <div class="main--content-container">
             <div class="main--sidenav">
@@ -66,10 +72,6 @@
               </div>
             </div>
             <div class="main--content">
-              <a id="collapse-main-btn" class="hero--button" href="#" onclick="togglePageContent()">
-                <span class="material-icons-outlined">south_west</span>
-                <span class="lowercase subtext">&nbsp;or <b>&lt;esc&gt;</b></span>
-              </a>
               <div class="main--content-item visible" data-id="about">
                 <h1>[/] About me</h1>
                 <p>Hello! My name is Kyle and this is me talking about myself.</p>
@@ -85,6 +87,7 @@
               <div class="main--content-item hidden" data-id="projects">
                 <h1>[~] Projects</h1>
                 <p>Here are some of the fun projects I've worked on:</p>
+                <!-- <a class="hero--button" href="http://kyledumovic.com/">my old website -></a> -->
                 <br/>
               </div>
               <div class="main--content-item hidden" data-id="contact">

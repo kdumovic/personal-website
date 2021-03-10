@@ -213,7 +213,7 @@ html.light-mode .dark-mode--button span.dark {
 
   max-width: 1440px;
 
-  margin: min(75px, 7vw);
+  margin: var(--default-padding);
 
   display: flex;
   flex-direction: column;
@@ -224,15 +224,15 @@ html.light-mode .dark-mode--button span.dark {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-}
 
-.main {
   color: var(--fg-color);
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
 
   min-width: 0px;
   min-height: 0px;
+
+  overflow: hidden;
 
   /* transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
     opacity 0.3s ease-out; */
@@ -249,51 +249,16 @@ html.light-mode .dark-mode--button span.dark {
   min-height: 100%;
 }
 
-.page--content-container.expanded .dark-mode--button {
-  display: none;
-}
-
-.page--content-container.compressed .main .floating-hero--content {
-  display: block;
-  opacity: 1;
-}
-
-.page--content-container.expanded .main .floating-hero--content {
-  display: none;
-  opacity: 0;
-}
-
+.page--content-container.expanded .dark-mode--button,
+.page--content-container.expanded .main .main--hero,
+.page--content-container.compressed .main .main--title-bar,
 .page--content-container.compressed .main .main--content-container {
   display: none;
-  opacity: 0;
-}
-
-.page--content-container.expanded .main .main--content-container {
-  display: flex;
-  opacity: 1;
+  /* opacity: 0; */
 }
 
 .dark-mode--button {
   align-self: flex-start;
-  /* position: absolute;
-  z-index: 1;
-
-  top: min(75px, 7vw);
-  left: min(75px, 7vw); */
-}
-
-.floating-hero--content {
-  padding: var(--default-padding);
-}
-
-.hero--button-container ul li {
-  display: inline-block;
-}
-
-.hero--button-container ul li a {
-  margin-top: 10px;
-  margin-right: 10px;
-  display: inline-block;
 }
 
 /* For a blinking hero button, but it makes me nervous */
@@ -302,6 +267,9 @@ html.light-mode .dark-mode--button span.dark {
 } */
 
 a.hero--button {
+  display: inline-flex; /* magic! */
+  align-items: center;
+
   text-transform: uppercase;
   text-decoration: none;
 
@@ -322,7 +290,61 @@ a.hero--button:hover {
   transition: all 0.2s ease-in;
 }
 
+a.hero--button .subtext {
+  padding-left: 10px;
+}
+
+.main--hero {
+  display: block;
+  padding: var(--default-padding);
+}
+
+.main--hero .hero--button {
+  margin-top: 10px;
+}
+
+.main--title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 20px;
+
+  border-bottom: 1px solid var(--fg-color);
+}
+
+.main--title-bar--circles {
+  display: flex;
+}
+
+.main--title-bar #collapse-main-btn {
+  border: 0;
+  border-left: 1px solid var(--fg-color);
+}
+
+.main--title-bar .circle {
+  height: 12px;
+  width: 12px;
+  background-color: var(--fg-color);
+  border: 1px solid black; /* to enhance colors on white bg */
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+.main--title-bar .circle.red {
+  background-color: #fb6752;
+}
+
+.main--title-bar .circle.yellow {
+  background-color: #fdbf00;
+}
+
+.main--title-bar .circle.green {
+  background-color: #31c72f;
+}
+
 .main--content-container {
+  display: flex;
   flex-direction: row;
   height: 100%;
   width: 100%;
@@ -421,17 +443,6 @@ a.hero--button:hover {
   position: relative;
 }
 
-#collapse-main-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-top: none;
-  border-right: none;
-  /* padding: 5px 10px; */
-  display: flex;
-  align-items: center;
-}
-
 /* Custom Text Styles */
 
 h1 {
@@ -494,5 +505,24 @@ b {
 
   .hero--button .lowercase.subtext {
     display: none;
+  }
+
+  .main--title-bar {
+    padding-left: var(--default-padding);
+  }
+
+  .main--title-bar--circles {
+    display: none;
+  }
+
+  .main--title-bar--title {
+    visibility: hidden;
+    line-height: 0;
+  }
+
+  .main--title-bar--title:after {
+    content: "kyle_dumovic";
+    visibility: visible;
+    display: block;
   }
 }
