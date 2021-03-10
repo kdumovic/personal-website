@@ -139,6 +139,7 @@ table {
   --fg-color: white;
   --bg-color: black;
   --default-padding: min(50px, 7vw);
+  --ascii-font-size: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -211,7 +212,7 @@ html.light-mode .dark-mode--button span.dark {
 
   width: 100%;
 
-  max-width: 1440px;
+  max-width: min(1440px, calc(100vw - 2 * var(--default-padding)));
 
   margin: var(--default-padding);
 
@@ -229,14 +230,7 @@ html.light-mode .dark-mode--button span.dark {
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
 
-  min-width: 0px;
-  min-height: 0px;
-
   overflow: hidden;
-
-  /* transition: min-width 0.3s ease-out, min-height 0.3s ease-out,
-    opacity 0.3s ease-out; */
-  /* transition: all 0.3s ease-out; */
 }
 
 .page--content-container.compressed .main {
@@ -442,9 +436,30 @@ a.hero--button .material-icons-outlined {
 
   padding: var(--default-padding);
 
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   position: relative;
+}
+
+.ascii-map {
+  /* font-size: 0.36vw; */
+  line-height: normal;
+  font-size: min(var(--ascii-font-size), 5px);
+}
+
+.ascii-map span.light {
+  color: var(--bg-color);
+}
+
+.ascii-map span.dark {
+  color: var(--fg-color);
+}
+
+.ascii-map span.pin {
+  position: absolute;
+  margin-left: -12px;
+  margin-top: -16px;
 }
 
 /* Custom Text Styles */

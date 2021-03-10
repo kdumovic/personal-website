@@ -171,6 +171,10 @@ function resizeCanvas() {
   globals.htmlCanvas.style.height = `${height}px`;
   globals.ctx.scale(window.devicePixelRatio,window.devicePixelRatio); // adjust for retina displays
 
+  // adjust ascii text size
+  let parentWidth = document.querySelector('.main--content').offsetWidth;
+  globals.root.style.setProperty('--ascii-font-size', `${parentWidth/215}px`);
+
   redraw();
 }
 
