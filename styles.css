@@ -249,7 +249,7 @@ html.light-mode .dark-mode--button span.dark {
   min-height: 100%;
 }
 
-.page--content-container.expanded .dark-mode--button,
+.page--content-container.expanded #dark-mode--hero-button,
 .page--content-container.expanded .main .main--hero,
 .page--content-container.compressed .main .main--title-bar,
 .page--content-container.compressed .main .main--content-container {
@@ -257,7 +257,7 @@ html.light-mode .dark-mode--button span.dark {
   /* opacity: 0; */
 }
 
-.dark-mode--button {
+#dark-mode--hero-button {
   align-self: flex-start;
 }
 
@@ -321,8 +321,8 @@ a.hero--button .material-icons-outlined {
   display: flex;
 }
 
-.main--title-bar #collapse-main-btn {
-  border: 0;
+.main--title-bar .hero--button {
+  border: none;
   border-left: 1px solid var(--fg-color);
 }
 

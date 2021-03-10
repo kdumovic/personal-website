@@ -14,7 +14,7 @@
     <canvas id="bg-canvas"></canvas>
     <div class="page--content-container compressed">
       <div class="page--content">
-        <a class="hero--button dark-mode--button" href="#" onclick="toggleDarkMode()">
+        <a id="dark-mode--hero-button" class="hero--button dark-mode--button" href="#" onclick="toggleDarkMode()">
           <span class="hero--button-text light">Dark Mode</span>
           <span class="hero--button-text dark">Light Mode</span>
           <span class="lowercase subtext">or&nbsp;<b>&lt;space&gt;</b></span>
@@ -36,7 +36,11 @@
             </span>
             <span class="main--title-bar--title">guest@kyledumovic.com: ~/</span>
             <span>
-              <a id="collapse-main-btn" class="hero--button" href="#" onclick="togglePageContent()">
+              <a class="hero--button dark-mode--button" href="#" onclick="toggleDarkMode()">
+                <span class="material-icons-outlined light">dark_mode</span>
+                <span class="material-icons-outlined dark">light_mode</span>
+              </a><!--
+              --><a id="collapse-main-btn" class="hero--button" href="#" onclick="togglePageContent()">
                 <span class="material-icons-outlined">south_west</span>
                 <span class="lowercase subtext">or&nbsp;<b>&lt;esc&gt;</b></span>
               </a>
