@@ -294,6 +294,10 @@ a.hero--button .subtext {
   padding-left: 10px;
 }
 
+a.hero--button .material-icons-outlined {
+  font-size: 21px;
+}
+
 .main--hero {
   display: block;
   padding: var(--default-padding);
@@ -346,7 +350,7 @@ a.hero--button .subtext {
 .main--content-container {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: calc(100% - var(--default-padding));
   width: 100%;
 }
 
