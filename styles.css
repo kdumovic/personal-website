@@ -230,7 +230,7 @@ html.light-mode .dark-mode--button span.dark {
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
 
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .page--content-container.compressed .main {
@@ -388,6 +388,10 @@ a.hero--button .material-icons-outlined {
   padding: 20px;
 }
 
+.main--sidenav--subtext p:last-child {
+  margin-bottom: 0;
+}
+
 #cursor {
   width: 10px;
   height: 20px;
@@ -468,9 +472,7 @@ a.hero--button .material-icons-outlined {
 
 [data-tooltip] {
   position: relative;
-}
-
-[data-tooltip]:hover {
+  z-index: 2;
   cursor: crosshair;
 }
 
@@ -488,9 +490,7 @@ a.hero--button .material-icons-outlined {
   bottom: 150%;
   left: 50%;
   margin-bottom: 5px;
-  /* margin-left: -80px; */
   padding: 7px 10px;
-  /* width: 160px; */
   transform: translateX(-50%);
   border-radius: 3px;
   background-color: #000;
@@ -600,9 +600,14 @@ b {
     line-height: 0;
   }
 
-  .main--title-bar--title:after {
+  .main--title-bar--title::after {
     content: "kyle_dumovic";
     visibility: visible;
     display: block;
+  }
+
+  [data-tooltip]::before {
+    max-width: 130px;
+    white-space: normal;
   }
 }
