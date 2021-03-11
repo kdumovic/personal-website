@@ -275,7 +275,7 @@ function togglePageContent() {
 }
 
 function openResume() {
-  window.open('./kyle_dumovic_resume_9.11.20.pdf');
+  window.open('./kyle_dumovic_resume_3.11.21_public.pdf');
 }
 
 function showContentCorrespondingToNavItem(listItem) {
