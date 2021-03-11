@@ -380,8 +380,18 @@ a.hero--button .material-icons-outlined {
   padding: 10px 25px;
 }
 
-.main--sidenav ul li span.material-icons-outlined {
+/* For use with materialUI chevron icons */
+/* .main--sidenav ul li span.material-icons-outlined {
   float: right;
+} */
+
+.main--sidenav ul li span:last-child {
+  float: right;
+}
+
+/* For positioning materialUI download icon */
+.main--sidenav ul li:last-child span:last-child {
+  margin-right: -5px;
 }
 
 .main--sidenav ul li.selected {
