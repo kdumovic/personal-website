@@ -4,6 +4,8 @@ function main() {
 
   globals.root = document.documentElement;
 
+  globals.widthForMobile = 600; // px
+
   globals.rectStrokeWidth = 1;
   globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color'); // the opposite color since we run toggleDarkMode to initialze state on first load
 
@@ -48,7 +50,7 @@ function main() {
   let li = document.querySelector('.main--sidenav ul li.selected');
   globals.currentNavItemIndex = [...globals.navItemList].indexOf(li);
 
-  globals.currentlyExpanded = () => document.querySelector('.page--content-container').classList.contains('expanded')
+  globals.currentlyExpanded = () => document.querySelector('.page--content-container').classList.contains('expanded');
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
@@ -167,6 +169,14 @@ function resizeCanvas() {
   globals.htmlCanvas.style.width = `${width}px`;
   globals.htmlCanvas.style.height = `${height}px`;
   globals.ctx.scale(window.devicePixelRatio,window.devicePixelRatio); // adjust for retina displays
+
+  // keep cursor in the correct place (may slow things down)
+  if (window.innerWidth < globals.widthForMobile) {
+    globals.cursor.classList.add('hidden');
+  } else if (globals.currentlyExpanded()) {
+    globals.cursor.classList.remove('hidden');
+    moveCursorToNavItem(globals.navItemList[globals.currentNavItemIndex]);
+  }
 
   // adjust ascii text size
   let parentWidth = document.querySelector('.main--content').offsetWidth;
