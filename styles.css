@@ -230,7 +230,7 @@ html.light-mode .dark-mode--button span.dark {
   background-color: var(--bg-color);
   border: 1px solid var(--fg-color);
 
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .page--content-container.compressed .main {
@@ -266,9 +266,6 @@ a {
 
   text-decoration: none;
 
-  font-size: 18px;
-  font-weight: 500;
-
   padding: 5px 10px;
 
   color: var(--fg-color);
@@ -289,6 +286,7 @@ a:hover {
 a.hero--button {
   text-transform: uppercase;
   padding: 15px 20px;
+  line-height: 18px !important;
 }
 
 a.hero--button .subtext {
@@ -351,7 +349,9 @@ a.hero--button .material-icons-outlined {
 .main--content-container {
   display: flex;
   flex-direction: row;
-  height: calc(100% - var(--default-padding));
+  /* TODO: Make this a var? */
+  /* 52px is the combineed height of main--title-bar (50px) and its two 1px borders */
+  height: calc(100vh - 2 * var(--default-padding) - 52px);
   width: 100%;
 }
 
@@ -583,6 +583,11 @@ h2 {
   margin-bottom: 10px;
 }
 
+a {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 p,
 .main--content-item {
   font-size: 18px;
@@ -614,10 +619,13 @@ b {
     font-size: 30px;
   }
 
-  p {
+  a,
+  p,
+  .main--content-item {
     font-size: 16px;
   }
 
+  .main--content-container,
   .page--content-container.expanded {
     height: auto;
   }
