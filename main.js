@@ -52,9 +52,12 @@ function main() {
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
-  // moveCursorTo(document.querySelector('.hero--button-container .hero--button-text'));
-  moveCursorToNavItem(document.querySelector('.main--sidenav ul li.selected'));
-  globals.cursor.classList.toggle('hidden'); // hide cursor initially
+
+  // set main content
+  let currentNavItem = document.querySelector('.main--sidenav ul li.selected');
+  showContentCorrespondingToNavItem(currentNavItem);
+  moveCursorToNavItem(currentNavItem);
+  // globals.cursor.classList.toggle('hidden'); // hide cursor initially
 }
 
 // TODO: Add Event Listeners for all clickable DOM elements instead of using onclick

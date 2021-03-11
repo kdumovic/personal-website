@@ -466,6 +466,63 @@ a.hero--button .material-icons-outlined {
   text-shadow: 0px 0px 10px var(--bg-color);
 }
 
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover {
+  cursor: crosshair;
+}
+
+/* From here: https://codepen.io/cbracco/pen/qzukg */
+[data-tooltip]::before,
+[data-tooltip]::after {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  /* margin-left: -80px; */
+  padding: 7px 10px;
+  /* width: 160px; */
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]::after {
+  content: " ";
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* Custom Text Styles */
 
 h1 {
