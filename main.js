@@ -4,7 +4,7 @@ function main() {
 
   globals.root = document.documentElement;
 
-  globals.widthForMobile = 600; // px
+  globals.widthForMobile = 750; // px
 
   globals.rectStrokeWidth = 1;
   globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color'); // the opposite color since we run toggleDarkMode to initialze state on first load

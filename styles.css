@@ -320,6 +320,10 @@ a.hero--button .material-icons-outlined {
   border-bottom: 1px solid var(--fg-color);
 }
 
+.main--title-bar--title--mobile {
+  display: none;
+}
+
 .main--title-bar--circles {
   display: flex;
 }
@@ -598,7 +602,9 @@ h2 {
   margin-bottom: 10px;
 }
 
-a {
+a,
+a span.material-icons,
+a span.material-icons-outlined {
   font-size: 18px;
   font-weight: 500;
   line-height: 18px;
@@ -635,12 +641,14 @@ i {
 }
 
 /* Responsive (mobile support) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   h1 {
     font-size: 30px;
   }
 
   a,
+  a span.material-icons,
+  a span.material-icons-outlined,
   p,
   .main--content-item {
     font-size: 16px;
@@ -672,13 +680,10 @@ i {
   }
 
   .main--title-bar--title {
-    visibility: hidden;
-    line-height: 0;
+    display: none;
   }
 
-  .main--title-bar--title::after {
-    content: "kyle_dumovic";
-    visibility: visible;
+  .main--title-bar--title--mobile {
     display: block;
   }
 
