@@ -245,6 +245,10 @@ html.light-mode .dark-mode--button span.dark {
 
 .page--content-container.expanded #dark-mode--hero-button,
 .page--content-container.expanded .main .main--hero,
+.page--content-container.expanded
+  .main
+  .main--content-item[data-id="about"]
+  .hero--button,
 .page--content-container.compressed .main .main--title-bar,
 .page--content-container.compressed .main .main--content-container {
   display: none;
