@@ -245,10 +245,6 @@ html.light-mode .dark-mode--button span.dark {
 
 .page--content-container.expanded #dark-mode--hero-button,
 .page--content-container.expanded .main .main--hero,
-.page--content-container.expanded
-  .main
-  .main--content-item[data-id="about"]
-  .hero--button,
 .page--content-container.compressed .main .main--title-bar,
 .page--content-container.compressed .main .main--content-container {
   display: none;
@@ -477,6 +473,18 @@ a.hero--button .material-icons-outlined {
   margin: 15px 0;
 }
 
+/* About section */
+
+.page--content-container
+  .main
+  .main--content-item[data-id="about"]
+  .hero--button {
+  display: none;
+  margin-bottom: 40px;
+}
+
+/* Contact section */
+
 .ascii-map {
   /* font-size: 0.36vw; */
   line-height: normal;
@@ -685,6 +693,13 @@ i {
 
   .main--title-bar--title--mobile {
     display: block;
+  }
+
+  .page--content-container
+    .main
+    .main--content-item[data-id="about"]
+    .hero--button {
+    display: inline-flex;
   }
 
   .ascii-map--key {
