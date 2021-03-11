@@ -344,7 +344,9 @@ a.hero--button .material-icons-outlined {
 .main--content-container {
   display: flex;
   flex-direction: row;
-  height: calc(100% - var(--default-padding));
+  height: calc(
+    100% - var(--default-padding) + 8px
+  ); /* 8px (?) to fill the gap! */
   width: 100%;
 }
 
@@ -450,6 +452,39 @@ a.hero--button .material-icons-outlined {
   /* font-size: 0.36vw; */
   line-height: normal;
   font-size: min(var(--ascii-font-size), 5px);
+  position: relative;
+  display: inline-block;
+  /* border: 1px solid var(--fg-color); */
+}
+
+.ascii-map--key {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+
+  bottom: 20px;
+}
+
+.ascii-map--key span {
+  /* TODO: Use a mixin here, the style matches the tooltips! */
+  padding: 7px 10px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+
+  /* alternative styling */
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  border: 1px solid var(--fg-color);
 }
 
 .ascii-map span.light {
@@ -604,6 +639,10 @@ b {
     content: "kyle_dumovic";
     visibility: visible;
     display: block;
+  }
+
+  .ascii-map--key {
+    position: relative;
   }
 
   [data-tooltip]::before {
