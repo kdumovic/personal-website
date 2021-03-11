@@ -78,6 +78,9 @@ function initialize() {
     if (event.code === 'Escape') {
       if (globals.currentlyExpanded()) togglePageContent();
     }
+    if (event.code === 'ArrowRight') {
+      showContentCorrespondingToNavItem(globals.navItemList[globals.currentNavItemIndex]);
+    }
     if (event.code === 'ArrowDown') {
       if (globals.currentNavItemIndex < globals.numNavItems-1) globals.currentNavItemIndex++;
       moveCursorToNavItem(globals.navItemList[globals.currentNavItemIndex]);
