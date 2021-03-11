@@ -57,7 +57,7 @@ function main() {
   let currentNavItem = document.querySelector('.main--sidenav ul li.selected');
   showContentCorrespondingToNavItem(currentNavItem);
   moveCursorToNavItem(currentNavItem);
-  // globals.cursor.classList.toggle('hidden'); // hide cursor initially
+  globals.cursor.classList.toggle('hidden'); // hide cursor initially
 }
 
 // TODO: Add Event Listeners for all clickable DOM elements instead of using onclick

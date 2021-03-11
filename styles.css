@@ -456,7 +456,7 @@ a.hero--button .material-icons-outlined {
 .main--content-item ul li {
   display: flex;
   align-items: flex-start;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .ascii-map {
@@ -575,6 +575,7 @@ h1 {
   font-size: 36px;
   font-weight: 500;
   margin-bottom: 30px; /* 20px */
+  line-height: 1;
 }
 
 h2 {
@@ -586,6 +587,7 @@ h2 {
 a {
   font-size: 18px;
   font-weight: 500;
+  line-height: 18px;
 }
 
 p,
@@ -601,8 +603,13 @@ p,
   font-weight: 300;
 }
 
-b {
+b,
+em {
   font-weight: 500;
+}
+
+i {
+  font-style: italic;
 }
 
 .lowercase {
