@@ -52,12 +52,6 @@ function main() {
 
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
-
-  // set main content
-  let currentNavItem = document.querySelector('.main--sidenav ul li.selected');
-  showContentCorrespondingToNavItem(currentNavItem);
-  moveCursorToNavItem(currentNavItem);
-  globals.cursor.classList.toggle('hidden'); // hide cursor initially
 }
 
 // TODO: Add Event Listeners for all clickable DOM elements instead of using onclick
@@ -255,13 +249,14 @@ function toggleDarkMode() {
 function togglePageContent() {
   let pageContentContainer = document.querySelector('.page--content-container');
   if (pageContentContainer.classList.contains('compressed')) {
-    globals.cursor.classList.toggle('hidden'); // show cursor
-    pageContentContainer.classList.remove('compressed')
-    pageContentContainer.classList.add('expanded')
+    globals.cursor.classList.remove('hidden'); // show cursor
+    pageContentContainer.classList.remove('compressed');
+    pageContentContainer.classList.add('expanded');
+    showContentCorrespondingToNavItem(globals.navItemList[globals.currentNavItemIndex]);
   } else if (pageContentContainer.classList.contains('expanded')) {
-    globals.cursor.classList.toggle('hidden'); // hide cursor
-    pageContentContainer.classList.remove('expanded')
-    pageContentContainer.classList.add('compressed')
+    globals.cursor.classList.add('hidden'); // hide cursor
+    pageContentContainer.classList.remove('expanded');
+    pageContentContainer.classList.add('compressed');
   } else {
     console.log('Something is broken with page content container!');
   }
