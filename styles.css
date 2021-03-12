@@ -420,7 +420,8 @@ a.hero--button .material-icons-outlined {
   margin-top: 3px;
 
   transition: all 0.2s;
-  position: absolute;
+
+  position: fixed;
   background-color: var(--fg-color);
   z-index: 2;
   display: block;
