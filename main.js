@@ -33,6 +33,9 @@ function main() {
     }
   }
 
+  // adjust viewpoint height CSS var (also called in resizeCanvas())
+  globals.root.style.setProperty('--vh', `${window.innerHeight/100}px`);
+
   globals.htmlCanvas = document.querySelector("canvas");
   globals.ctx = globals.htmlCanvas.getContext("2d");
 
@@ -180,6 +183,9 @@ function resizeCanvas() {
     globals.cursor.classList.remove('hidden');
     moveCursorToNavItem(globals.navItemList[globals.currentNavItemIndex]);
   }
+
+  // adjust viewpoint height CSS var
+  globals.root.style.setProperty('--vh', `${window.innerHeight/100}px`);
 
   // adjust ascii text size
   let parentWidth = document.querySelector('.main--content').offsetWidth;

@@ -140,6 +140,7 @@ table {
   --bg-color: black;
   --default-padding: min(50px, 7vw);
   --ascii-font-size: 5px;
+  --vh: 1px; /* set dynamically in js */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -353,10 +354,14 @@ a.hero--button .material-icons-outlined {
 .main--content-container {
   display: flex;
   flex-direction: row;
-  /* TODO: Make this a var? */
-  /* 52px is the combineed height of main--title-bar (50px) and its two 1px borders */
-  height: calc(100vh - 2 * var(--default-padding) - 52px);
+  flex: 1; /* fill full available height */
+
   width: 100%;
+
+  /* 52px is the combineed height of main--title-bar (50px) and its two 1px borders */
+  /* somehow it's 49px now... */
+  /* Using [100 * var(--vh)] as opposed to [100vh] as a fix for mobile Chrome/Safari; --vh is set dynamically with js */
+  height: calc(100 * var(--vh) - 2 * var(--default-padding) - 49px);
 }
 
 .main--sidenav {
@@ -670,6 +675,8 @@ i {
   .main--content-container,
   .page--content-container.expanded {
     height: auto;
+    min-height: auto;
+    max-height: auto;
   }
 
   .main--sidenav {
