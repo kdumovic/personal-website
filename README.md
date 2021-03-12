@@ -2,6 +2,4 @@
 
 My personal website.
 
-Static HTML/CSS (for now).
-
-Some JS interactivity coming soon.
+HTML, CSS and [Vanilla JS](http://vanilla-js.com/), baby! 🚀
