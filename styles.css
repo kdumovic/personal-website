@@ -173,13 +173,17 @@ body {
 
 canvas,
 .page--content-container {
-  position: absolute;
   height: 100%;
   width: 100%;
 }
 
 canvas {
+  position: fixed;
   z-index: -1;
+}
+
+.page--content-container {
+  position: absolute;
 }
 
 .hidden {
