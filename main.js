@@ -55,6 +55,18 @@ function main() {
 
   globals.currentlyExpanded = () => document.querySelector('.page--content-container').classList.contains('expanded');
 
+  // Test via a getter in the options object to see if the passive property is accessed
+  globals.supportsPassive = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function() {
+        globals.supportsPassive = true;
+      }
+    });
+    window.addEventListener("testPassive", null, opts);
+    window.removeEventListener("testPassive", null, opts);
+  } catch (e) {}
+
   initialize();
   toggleDarkMode(); // swap on first load to initialize state
 }
@@ -65,7 +77,8 @@ function initialize() {
   window.addEventListener('resize', resizeCanvas, false);
 
   ['touchstart','touchmove','touchend','mousemove'].forEach(function(e) {
-    window.addEventListener(e, movementHandler);
+    window.addEventListener(e, movementHandler, globals.supportsPassive ? { passive: true } : false);
+    // passive for better scroll performance on modern browsers; more here: https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
   });
 
   window.addEventListener('keyup', event => {
