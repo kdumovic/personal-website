@@ -382,7 +382,7 @@ a.hero--button .material-icons-outlined {
 
 .main--sidenav ul li {
   font-size: 20px;
-  padding: 10px 25px;
+  padding: 10px 20px;
 }
 
 /* For use with materialUI chevron icons */
@@ -721,5 +721,14 @@ i {
   [data-tooltip]::before {
     max-width: 130px;
     white-space: normal;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .main--content {
+    padding: 25px;
+  }
+  .main--sidenav ul {
+    padding-top: 25px;
   }
 }
