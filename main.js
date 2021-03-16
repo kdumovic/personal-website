@@ -7,7 +7,7 @@ function main() {
   globals.widthForMobile = 768; // defaults to width of iPad (768px x 1024px)
 
   globals.rectStrokeWidth = 1;
-  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--bg-color'); // the opposite color since we run toggleDarkMode to initialze state on first load
+  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--fg-color');
 
   if (matchMedia) {
     const mq = window.matchMedia('(max-width: 600px)');
@@ -67,8 +67,8 @@ function main() {
     window.removeEventListener("testPassive", null, opts);
   } catch (e) {}
 
+  setInitialDarkModeState();
   initialize();
-  toggleDarkMode(); // swap on first load to initialize state
 }
 
 // TODO: Add Event Listeners for all clickable DOM elements instead of using onclick
@@ -259,6 +259,16 @@ function drawRectanglePair(f_x1, f_y1) {
 
 }
 
+function setInitialDarkModeState() {
+  if (globals.rectStrokeColor.trim() == 'black') {
+    document.querySelector('html').classList.add('light-mode');
+  } else if (globals.rectStrokeColor.trim() == 'white') {
+    document.querySelector('html').classList.add('dark-mode');
+  } else {
+    console.log('Something is broken initializing light/dark mode!');
+  }
+}
+
 function toggleDarkMode() {
   if (globals.rectStrokeColor.trim() == 'black') {
     globals.root.style.setProperty('--fg-color', 'white');
@@ -273,7 +283,7 @@ function toggleDarkMode() {
     document.querySelector('html').classList.add('light-mode');
     document.querySelector('html').classList.remove('dark-mode');
   } else {
-    console.log('Something is broken with light/dark mode!');
+    console.log('Something is broken swapping between light/dark mode!');
   }
   redraw();
 }
