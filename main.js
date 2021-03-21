@@ -7,7 +7,7 @@ function main() {
   globals.widthForMobile = 768; // defaults to width of iPad (768px x 1024px)
 
   globals.rectStrokeWidth = 1;
-  globals.rectStrokeColor = getComputedStyle(globals.root).getPropertyValue('--fg-color');
+  globals.rectStrokeColor = 'white'; // defaults to dark mode
 
   if (matchMedia) {
     const mq = window.matchMedia('(max-width: 600px)');
@@ -67,7 +67,6 @@ function main() {
     window.removeEventListener("testPassive", null, opts);
   } catch (e) {}
 
-  setInitialDarkModeState();
   initialize();
 }
 
@@ -147,7 +146,7 @@ function redraw() {
   let cy = height/2;
 
   // draw a rectangle in the exact center
-  drawRectangleFromCenter(cx, cy, globals.rectWidth, globals.rectHeight, 'blue', 1);
+  drawRectangleFromCenter(cx, cy, globals.rectWidth, globals.rectHeight, globals.rectStrokeColor, globals.rectStrokeWidth);
 
   // draw mouse rectangle
   // drawRectangle(currentMouseX - rectWidth/2, currentMouseY - rectHeight/2, rectWidth, rectHeight);
@@ -259,16 +258,6 @@ function drawRectanglePair(f_x1, f_y1) {
 
 }
 
-function setInitialDarkModeState() {
-  if (globals.rectStrokeColor.trim() == 'black') {
-    document.querySelector('html').classList.add('light-mode');
-  } else if (globals.rectStrokeColor.trim() == 'white') {
-    document.querySelector('html').classList.add('dark-mode');
-  } else {
-    console.log('Something is broken initializing light/dark mode!');
-  }
-}
-
 function toggleDarkMode() {
   if (globals.rectStrokeColor.trim() == 'black') {
     globals.root.style.setProperty('--fg-color', 'white');
@@ -352,4 +341,4 @@ function moveCursorTo(elem) {
   globals.cursor.style.transform = `translate(${coords.left+coords.width}px, ${coords.top}px)`;
 }
 
-window.onload = main();
+main();

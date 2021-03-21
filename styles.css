@@ -133,6 +133,17 @@ table {
 
 /* End CSS Reset */
 
+/* CSS vars */
+
+:root {
+  --fg-color: white;
+  --bg-color: black;
+  --default-padding: min(50px, 7vw);
+  --ascii-font-size: 5px;
+  --vh: 1px; /* set dynamically in js */
+}
+
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --fg-color: white;
@@ -146,17 +157,7 @@ table {
     --bg-color: white;
   }
 }
-
-/* CSS vars */
-/* defined below prefers-color-scheme for browsers that do not support that query yet */
-/* e.g. Samsung Internet, sigh */
-:root {
-  --fg-color: white;
-  --bg-color: black;
-  --default-padding: min(50px, 7vw);
-  --ascii-font-size: 5px;
-  --vh: 1px; /* set dynamically in js */
-}
+*/
 
 html,
 body {
