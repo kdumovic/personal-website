@@ -512,6 +512,7 @@ a.hero--button .material-icons-outlined {
 
 .svg--venn circle {
   stroke: var(--fg-color);
+  stroke-width: 2;
 }
 
 .page--content-container
